@@ -7,7 +7,7 @@ Coding Challenge
 # Prerequisites
 
 - .NET Core SDK 8.0.405. (<https://dotnet.microsoft.com/en-us/download/dotnet/8.0>), you can set another version in the Global.json, but the minimum is .NET 8.0.
-- Docker.
+- Docker or local sql server instance
 - Configure Secret in the project `Customer.Host`. 
 
 ![img.png](./doc/img.png)
@@ -64,7 +64,7 @@ docker-compose up db-customer
 
 ## Testing
 
-- Docker must be running with the SQL Server container.
+- Docker must be running with the SQL Server container or local sql server Local.
 ```shell
 docker-compose up db-customer
 ```
@@ -83,6 +83,10 @@ If you have the database in a docker container, you should add to the server thi
 docker build -t customer-app -f deploy/Dockerfile .
 
 docker run -d -p 5017:8080 --name customer-app -e "ASPNETCORE_ENVIRONMENT=Development" -e "ConnectionStrings__Default=Server=myServerAddress;Persist Security Info=True;Database=customer;User Id=sa;Password=.Your_PasswOrd;TrustServerCertificate=True;" customer-app
+```
+You can also pull the image from [the GitHub registry](https://github.com/franjfgcarmo/coding-challenge/pkgs/container/coding-challenge%2Fcustomer-api)
+```shell
+docker pull ghcr.io/franjfgcarmo/coding-challenge/customer-api:033a8a1
 ```
 
 ## Continuous Integration
