@@ -1,0 +1,26 @@
+
+services:
+
+  db-customer:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: ".Password1"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - db_data:/var/opt/mssql
+  app-customer:
+    build:
+      context: .
+      dockerfile: ./deploy/Dockerfile
+    ports:
+      - "5017:8080"
+    environment:
+      - ConnectionStrings__Default=Server=db-customer;persist security info=True;Database=customer;User Id=sa;Password=.Password1;TrustServerCertificate=True;
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - db-customer
+
+volumes:
+  db_data:
