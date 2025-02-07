@@ -1,0 +1,84 @@
+name: workflow-ci
+on:
+    push:
+        branches:
+        - main
+    pull_request:
+        branches:
+        - main  
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v4
+            name: Checkout
+          - name: Set up Dotnet
+            uses: actions/setup-dotnet@v4
+            with:
+              dotnet-version: '8.0.x'
+              global-json-file: 'global.json'
+              cache: true
+              cache-dependency-path: ./**/packages.lock.json
+          - run: dotnet restore
+            name: Restore
+          - run: dotnet build --no-restore
+            name: Build
+            
+    test:
+      needs: build
+      runs-on: ubuntu-latest
+      services:
+        sqlserver:
+          image: mcr.microsoft.com/mssql/server:2022-latest
+          env:
+            ACCEPT_EULA: "Y"
+            MSSQL_SA_PASSWORD: ".Password1"
+          ports:
+            - 1433:1433
+      steps:
+        - uses: actions/checkout@v4
+          name: Checkout
+        - name: Set up Dotnet
+          uses: actions/setup-dotnet@v4
+          with:
+            dotnet-version: '8.0.x'
+            global-json-file: 'global.json'
+            cache: true
+            cache-dependency-path: ./**/packages.lock.json
+        - name: Test with coverage
+          run: dotnet test --collect:"XPlat Code Coverage" --settings ./coverlet.runsettings
+        - name: ReportGenerator
+          run: |
+            dotnet tool install --global dotnet-reportgenerator-globaltool
+            reportgenerator "-reports:./**/coverage.cobertura.xml" "-targetdir:coverage" -reporttypes:Html
+        - name: Publish coverage report
+          uses: actions/upload-artifact@v4
+          with:
+            name: code-coverage-report
+            path: coverage
+    
+    delivery:
+      needs: test
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+          name: Checkout
+        - name: Docker login
+          uses: docker/login-action@v3
+          with:
+            registry: ghcr.io
+            username: ${{ github.actor }}
+            password: ${{ secrets.GITHUB_TOKEN }}
+        - name: Setup Docker builder
+          uses: docker/setup-buildx-action@v3
+        - name: Get Sha short
+          id: vars
+          run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+        - name: Build and push Docker image
+          uses: docker/build-push-action@v6
+          with:
+            context: ./
+            file: ./deploy/Dockerfile
+            push: true
+            tags: ghcr.io/${{ github.repository }}/customer-api:${{ steps.vars.outputs.sha_short }}
+          

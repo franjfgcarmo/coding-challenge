@@ -6,11 +6,11 @@ public class CustomerController(IMediator mediator) : ControllerBase
     [HttpGet]
     [Produces("application/json")]
     [SwaggerOperation(Summary = "Request all customers.", Description = "Request all customers.")]
-    [ProducesResponseType(typeof(List<CustomerList.CustomerResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(List<ListCustomer.CustomerResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> List(CancellationToken cancellationToken = default)
     {
-        return Ok(await mediator.Send(new CustomerList.CustomerQuery(), cancellationToken));
+        return Ok(await mediator.Send(new ListCustomer.CustomerQuery(), cancellationToken));
     }
 
     [HttpGet("{id:int}")]

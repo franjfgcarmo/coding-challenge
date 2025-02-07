@@ -15,14 +15,17 @@ public class CreateCustomerTest : FunctionalTestBase
     [Fact]
     public async Task CreateCustomer_ReturnsCreated_WhenCustomerIsCreated()
     {
-        var createCommand = new CustomerCreate.CustomerCreateCommand("New name", "", SexType.Female, "Address 1",
+        var createCustomer = new CustomerCreate.CustomerCreateCommand("New name", "", SexType.Female, "Address 1",
             "Country 1",
             "12345", "tset@email.com", DateTime.Now.AddYears(-20));
 
-        var response = await ServerFixture.Client.PostWithContentAsync(ApiDefinition.Customers.Create(), createCommand);
+        var response = await ServerFixture.Client.PostWithContentAsync(ApiDefinition.Customers.Create(), createCustomer);
 
         response.StatusCode.Should()
             .Be(HttpStatusCode.Created);
+        
+        // var customerCreated = await DbCustomer.Customers.FindAsync(createCustomer.Id);
+        // customerCreated!.FirstName.Should().Be(customerCreated.FirstName);
     }
 
     [Fact]

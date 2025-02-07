@@ -6,9 +6,9 @@ using FluentAssertions;
 
 namespace Customer.Api.IntegrationTests.Features.Customers;
 
-public class CustomerListTest : FunctionalTestBase
+public class ListCustomerTest : FunctionalTestBase
 {
-    public CustomerListTest(ServerFixture serverFixture) : base(serverFixture)
+    public ListCustomerTest(ServerFixture serverFixture) : base(serverFixture)
     {
     }
 
@@ -20,7 +20,7 @@ public class CustomerListTest : FunctionalTestBase
         response.StatusCode.Should().Be(HttpStatusCode.OK);
 
         var responseActivityDispatcher =
-            (await response.Content.ReadAsAsync<IEnumerable<CustomerList.CustomerResponse>>())!;
+            (await response.Content.ReadAsAsync<IEnumerable<ListCustomer.CustomerResponse>>())!;
 
         responseActivityDispatcher.Should().NotBeNull();
         responseActivityDispatcher.Should().HaveCount(0);
@@ -37,7 +37,7 @@ public class CustomerListTest : FunctionalTestBase
         response.StatusCode.Should().Be(HttpStatusCode.OK);
 
         var responseActivityDispatcher =
-            (await response.Content.ReadAsAsync<IEnumerable<CustomerList.CustomerResponse>>())!;
+            (await response.Content.ReadAsAsync<IEnumerable<ListCustomer.CustomerResponse>>())!;
 
         responseActivityDispatcher.Should()
             .NotBeNull();

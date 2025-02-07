@@ -3,7 +3,7 @@ using Customer.Domain.Entities;
 
 namespace Customer.Api.Features.Customers;
 
-public class CustomerList
+public class ListCustomer
 {
     public record CustomerResponse(
         int Id,
