@@ -3,6 +3,7 @@ using Customer.Api.Features.Customers;
 using Customer.Api.IntegrationTests.Infrastructure;
 using Customer.Domain.Entities;
 using FluentAssertions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Customer.Api.IntegrationTests.Features.Customers;
 
@@ -19,13 +20,18 @@ public class CreateCustomerTest : FunctionalTestBase
             "Country 1",
             "12345", "tset@email.com", DateTime.Now.AddYears(-20));
 
-        var response = await ServerFixture.Client.PostWithContentAsync(ApiDefinition.Customers.Create(), createCustomer);
+        var response =
+            await ServerFixture.Client.PostWithContentAsync(ApiDefinition.Customers.Create(), createCustomer);
 
         response.StatusCode.Should()
             .Be(HttpStatusCode.Created);
-        
-        // var customerCreated = await DbCustomer.Customers.FindAsync(createCustomer.Id);
-        // customerCreated!.FirstName.Should().Be(customerCreated.FirstName);
+
+        var customerCreated = await response.Content.ReadAsAsync<CustomerCreate.CustomerCreateResponse>();
+        customerCreated.Should()
+            .NotBeNull();
+        (await DbCustomer.Customers.AnyAsync(a => a.Id == customerCreated.Id))
+            .Should()
+            .BeTrue();
     }
 
     [Fact]
