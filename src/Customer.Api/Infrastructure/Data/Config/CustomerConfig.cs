@@ -13,22 +13,22 @@ public class CustomerConfig : IEntityTypeConfiguration<Domain.Entities.Customer>
 
         builder.Property(e => e.FirstName)
             .IsRequired()
-            .HasMaxLength(100);
+            .HasMaxLength(DatabaseConstants.Length100);
 
         builder.Property(e => e.LastName)
-            .HasMaxLength(100);
+            .HasMaxLength(DatabaseConstants.Length100);
 
         builder.Property(e => e.Address)
             .IsRequired()
-            .HasMaxLength(250);
+            .HasMaxLength(DatabaseConstants.Length250);
 
         builder.Property(e => e.Country)
             .IsRequired()
-            .HasMaxLength(50);
+            .HasMaxLength(DatabaseConstants.Length50);
 
         builder.Property(e => e.PostalCode)
             .IsRequired()
-            .HasMaxLength(5);
+            .HasMaxLength(DatabaseConstants.Length5);
 
         builder.Property(e => e.Email)
             .IsRequired()

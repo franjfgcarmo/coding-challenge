@@ -1,3 +1,4 @@
+using Customer.Api.Infrastructure.Data.Config;
 using Customer.Domain;
 using Customer.Domain.Entities;
 
@@ -45,17 +46,17 @@ public class CustomerUpdate
             RuleFor(x => x.FirstName)
                 .NotEmpty()
                 .WithMessage("Name is required.")
-                .MaximumLength(100)
+                .MaximumLength(DatabaseConstants.Length100)
                 .WithMessage("Name must not exceed 100 characters.");
             RuleFor(x => x.LastName)
-                .MaximumLength(100)
+                .MaximumLength(DatabaseConstants.Length100)
                 .WithMessage("Name must not exceed 100 characters.");
             RuleFor(x => x.Email)
                 .NotEmpty()
                 .WithMessage("Email is required.")
                 .EmailAddress()
                 .WithMessage("Email is invalid.")
-                .MaximumLength(100)
+                .MaximumLength(DatabaseConstants.Length100)
                 .WithMessage("Email must not exceed 100 characters.");
             RuleFor(x => x.Sex)
                 .IsInEnum()
@@ -66,12 +67,12 @@ public class CustomerUpdate
             RuleFor(x => x.PostalCode)
                 .NotEmpty()
                 .WithMessage("Postal code is required.")
-                .MaximumLength(5)
+                .MaximumLength(DatabaseConstants.Length5)
                 .WithMessage("Postal code must be 5 characters.");
             RuleFor(x => x.Address)
                 .NotEmpty()
                 .WithMessage("Address is required.")
-                .MaximumLength(250)
+                .MaximumLength(DatabaseConstants.Length250)
                 .WithMessage("Address must not exceed 250 characters.");
         }
     }
