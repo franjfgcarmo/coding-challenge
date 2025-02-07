@@ -121,3 +121,6 @@ The deployment process hasn’t been implemented, but through continuous integra
 - **Test**:
   - Customer.Domain.UnitTest: There should be more tests, but Customer is an anemic class
   - Customer.Api.IntegrationTest: I try to test all use cases: create, update, delete, get and list.
+
+## Todo.
+- Create Frontend. Maybe, I would have used ``Vue``, I don't have a lot of experience with ``blazor``
