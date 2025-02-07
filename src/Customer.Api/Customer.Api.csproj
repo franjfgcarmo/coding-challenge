@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>$(NativeFmk)</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" />
+      <PackageReference Include="FluentValidation.AspNetCore" />
+      <PackageReference Include="MediatR" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
+      <PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Customer.Domain\Customer.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

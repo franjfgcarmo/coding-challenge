@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.Host", "src\Customer.Host\Customer.Host.csproj", "{2E4B61A7-9FB3-4292-91A4-049651A08383}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1E7DA0CA-981B-447C-AC91-99BB6787813C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.Api", "src\Customer.Api\Customer.Api.csproj", "{94EE5369-CF4B-4A5F-A1F1-E0094B007151}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.Domain", "src\Customer.Domain\Customer.Domain.csproj", "{444E2D27-8902-4C7C-8949-B4A5A2C4716C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{802540DB-01EC-48FA-B39E-2629C08689C4}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		coverlet.runsettings = coverlet.runsettings
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{17AAFE08-8230-4925-B496-5145F20C1106}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.Domain.UnitTest", "test\Customer.Domain.UnitTest\Customer.Domain.UnitTest.csproj", "{089E76A6-EDEC-4A26-915D-0A9E05EE3980}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.Api.IntegrationTests", "test\Customer.Api.IntegrationTests\Customer.Api.IntegrationTests.csproj", "{20C29917-4D27-4838-A56F-258A788B34D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E4B61A7-9FB3-4292-91A4-049651A08383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E4B61A7-9FB3-4292-91A4-049651A08383}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E4B61A7-9FB3-4292-91A4-049651A08383}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E4B61A7-9FB3-4292-91A4-049651A08383}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94EE5369-CF4B-4A5F-A1F1-E0094B007151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94EE5369-CF4B-4A5F-A1F1-E0094B007151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94EE5369-CF4B-4A5F-A1F1-E0094B007151}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94EE5369-CF4B-4A5F-A1F1-E0094B007151}.Release|Any CPU.Build.0 = Release|Any CPU
+		{444E2D27-8902-4C7C-8949-B4A5A2C4716C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{444E2D27-8902-4C7C-8949-B4A5A2C4716C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{444E2D27-8902-4C7C-8949-B4A5A2C4716C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{444E2D27-8902-4C7C-8949-B4A5A2C4716C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{089E76A6-EDEC-4A26-915D-0A9E05EE3980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{089E76A6-EDEC-4A26-915D-0A9E05EE3980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{089E76A6-EDEC-4A26-915D-0A9E05EE3980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{089E76A6-EDEC-4A26-915D-0A9E05EE3980}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20C29917-4D27-4838-A56F-258A788B34D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20C29917-4D27-4838-A56F-258A788B34D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20C29917-4D27-4838-A56F-258A788B34D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20C29917-4D27-4838-A56F-258A788B34D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2E4B61A7-9FB3-4292-91A4-049651A08383} = {1E7DA0CA-981B-447C-AC91-99BB6787813C}
+		{94EE5369-CF4B-4A5F-A1F1-E0094B007151} = {1E7DA0CA-981B-447C-AC91-99BB6787813C}
+		{444E2D27-8902-4C7C-8949-B4A5A2C4716C} = {1E7DA0CA-981B-447C-AC91-99BB6787813C}
+		{089E76A6-EDEC-4A26-915D-0A9E05EE3980} = {17AAFE08-8230-4925-B496-5145F20C1106}
+		{20C29917-4D27-4838-A56F-258A788B34D7} = {17AAFE08-8230-4925-B496-5145F20C1106}
+	EndGlobalSection
+EndGlobal
