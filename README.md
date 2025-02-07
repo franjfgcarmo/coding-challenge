@@ -84,7 +84,9 @@ docker build -t customer-app -f deploy/Dockerfile .
 
 docker run -d -p 5017:8080 --name customer-app -e "ASPNETCORE_ENVIRONMENT=Development" -e "ConnectionStrings__Default=Server=myServerAddress;Persist Security Info=True;Database=customer;User Id=sa;Password=.Your_PasswOrd;TrustServerCertificate=True;" customer-app
 ```
+
 You can also pull the image from [the GitHub registry](https://github.com/franjfgcarmo/coding-challenge/pkgs/container/coding-challenge%2Fcustomer-api)
+
 ```shell
 docker pull ghcr.io/franjfgcarmo/coding-challenge/customer-api:033a8a1
 ```
