@@ -117,5 +117,5 @@ The deployment process hasn’t been implemented, but through continuous integra
   - Customer.Api: Contains the API and infrastructure layers. It can be separated into another project, but these go together.
   - Customer.Domain: This project has "the business rules" and Entities, so it is separated from the rest of the layers.
 - **Test**:
-  - Customer.Domain.UnitTest: When I started to implement the calculator, I created unit tests to check that the operations worked correctly.
-  - Customer.Api.IntegrationTest: I try to test all use cases.
+  - Customer.Domain.UnitTest: There should be more tests, but Customer is an anemic class
+  - Customer.Api.IntegrationTest: I try to test all use cases: create, update, delete, get and list.
